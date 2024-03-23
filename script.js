@@ -1,6 +1,8 @@
 let toggleStatus = "c";
 displayCurrentLocationWeatherInfo();
 
+const toggle_C = document.querySelector("#toggle_C");
+const toggle_F = document.querySelector("#toggle_F");
 const london = document.querySelector("#london");
 const tokyo = document.querySelector("#tokyo");
 const NY = document.querySelector("#NY");
@@ -49,13 +51,14 @@ async function getWeatherData(location) {
     alert(error);
   }
 }
-const toggle_C = document.querySelector("#toggle_C");
-const toggle_F = document.querySelector("#toggle_F");
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   displayWeatherInfo(searchInput.value);
 });
-
+myLoc.addEventListener("click", () => {
+  displayCurrentLocationWeatherInfo();
+});
 london.addEventListener("click", () => {
   displayWeatherInfo("london");
 });
@@ -67,9 +70,6 @@ NY.addEventListener("click", () => {
 });
 paris.addEventListener("click", () => {
   displayWeatherInfo("paris");
-});
-myLoc.addEventListener("click", () => {
-  displayCurrentLocationWeatherInfo();
 });
 
 function displayWeatherInfo(loc) {
@@ -112,19 +112,6 @@ function displayCurrentLocationWeatherInfo() {
   async function showPosition(position) {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    try {
-      const response = await fetch(
-        `https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}&api_key=65fe01ab3517a136534026yfvc1453a`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        const myCity = data.address.city;
-        displayWeatherInfo(myCity);
-      } else {
-        throw new Error("Invalid Location");
-      }
-    } catch (error) {
-      alert(error);
-    }
+    displayWeatherInfo(`${lat},${lon}`);
   }
 }
