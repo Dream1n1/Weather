@@ -8,18 +8,44 @@
     <title>Weather</title>
   </head>
   <body>
-    <h1>Weather</h1>
-    <form onsubmit>
-      <label for="search">Search your city: </label>
-      <input type="text" id="search" required />
-      <button type="submit" id="submitBtn">Search</button>
-    </form>
+    <div id="suggestedCities">
+      <div id="london">London</div>
+      <div id="tokyo">Tokyo</div>
+      <div id="NY">New York</div>
+      <div id="paris">Paris</div>
+    </div>
+    <div class="formContainer">
+      <form onsubmit>
+        <input
+          type="text"
+          id="search"
+          placeholder="Search for city.."
+          required
+        />
+        <button type="submit" id="submitBtn"></button>
+        <div id="myLocation"></div>
+      </form>
+      <div id="toggle">
+        <button id="toggle_C">°C</button>
+        <span> | </span>
+        <button id="toggle_F">°F</button>
+      </div>
+    </div>
     <div class="container">
-      <h1 id="cityName"></h1>
-      <h1 id="countryName"></h1>
-      <h2 id="condition"></h2>
-      <h2 id="temp_c"></h2>
-      <h2 id="temp_f"></h2>
+      <div id="locationContainer">
+        <h1 id="currentLocation"></h1>
+      </div>
+      <div id="conditionContainer">
+        <img src="" alt="" id="conditionIcon" />
+        <h2 id="condition"></h2>
+      </div>
+      <h2 id="temp"></h2>
+      <div id="stat">
+        <div id="rise"></div>
+        <div id="set"></div>
+        <div id="high"></div>
+        <div id="low"></div>
+      </div>
     </div>
   </body>
 </html>
